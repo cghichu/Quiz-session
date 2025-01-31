@@ -62,7 +62,7 @@
             <div class="question">What's Hrishikesh's favorite song? 🎶</div>
             <div class="options" id="question1-options"></div>
             <div id="question1-feedback"></div>
-            <input type="hidden" name="question1" id="answer1">
+            <input type="hidden" name="question1" id="answer1" required>
         </div>
 
         <!-- Question 2 -->
@@ -70,7 +70,7 @@
             <div class="question">What's Hrishikesh's favorite movie? 🎬</div>
             <div class="options" id="question2-options"></div>
             <div id="question2-feedback"></div>
-            <input type="hidden" name="question2" id="answer2">
+            <input type="hidden" name="question2" id="answer2" required>
         </div>
 
         <!-- Question 3 -->
@@ -78,7 +78,7 @@
             <div class="question">What's Hrishikesh's favorite food? 🍔</div>
             <div class="options" id="question3-options"></div>
             <div id="question3-feedback"></div>
-            <input type="hidden" name="question3" id="answer3">
+            <input type="hidden" name="question3" id="answer3" required>
         </div>
 
         <!-- Question 4 -->
@@ -86,7 +86,7 @@
             <div class="question">What's Hrishikesh's favorite season? ❄️</div>
             <div class="options" id="question4-options"></div>
             <div id="question4-feedback"></div>
-            <input type="hidden" name="question4" id="answer4">
+            <input type="hidden" name="question4" id="answer4" required>
         </div>
 
         <!-- Question 5 -->
@@ -94,7 +94,7 @@
             <div class="question">What's Hrishikesh's favorite movie genre? 🎥</div>
             <div class="options" id="question5-options"></div>
             <div id="question5-feedback"></div>
-            <input type="hidden" name="question5" id="answer5">
+            <input type="hidden" name="question5" id="answer5" required>
         </div>
 
         <!-- Question 6 -->
@@ -102,7 +102,7 @@
             <div class="question">What's Hrishikesh's favorite video game? 🎮</div>
             <div class="options" id="question6-options"></div>
             <div id="question6-feedback"></div>
-            <input type="hidden" name="question6" id="answer6">
+            <input type="hidden" name="question6" id="answer6" required>
         </div>
 
         <!-- Question 7 -->
@@ -110,7 +110,7 @@
             <div class="question">What's Hrishikesh's favorite way to relax? 🌴</div>
             <div class="options" id="question7-options"></div>
             <div id="question7-feedback"></div>
-            <input type="hidden" name="question7" id="answer7">
+            <input type="hidden" name="question7" id="answer7" required>
         </div>
 
         <!-- Question 8 -->
@@ -118,7 +118,7 @@
             <div class="question">What's Hrishikesh's favorite subject? 📚</div>
             <div class="options" id="question8-options"></div>
             <div id="question8-feedback"></div>
-            <input type="hidden" name="question8" id="answer8">
+            <input type="hidden" name="question8" id="answer8" required>
         </div>
 
         <!-- Question 9 -->
@@ -126,7 +126,7 @@
             <div class="question">What's Hrishikesh's favorite holiday? 🎉</div>
             <div class="options" id="question9-options"></div>
             <div id="question9-feedback"></div>
-            <input type="hidden" name="question9" id="answer9">
+            <input type="hidden" name="question9" id="answer9" required>
         </div>
 
         <!-- Question 10 -->
@@ -134,7 +134,7 @@
             <div class="question">What's Hrishikesh's favorite color? 🎨</div>
             <div class="options" id="question10-options"></div>
             <div id="question10-feedback"></div>
-            <input type="hidden" name="question10" id="answer10">
+            <input type="hidden" name="question10" id="answer10" required>
         </div>
 
         <!-- Question 11 -->
@@ -142,7 +142,7 @@
             <div class="question">What's Hrishikesh's favorite animal? 🐕</div>
             <div class="options" id="question11-options"></div>
             <div id="question11-feedback"></div>
-            <input type="hidden" name="question11" id="answer11">
+            <input type="hidden" name="question11" id="answer11" required>
         </div>
 
         <button id="submit-button" type="submit" style="display: none;">Submit Quiz 🥹</button>
@@ -182,8 +182,8 @@
             },
             {
                 question: "What's Hrishikesh's favorite way to relax? 🌴",
-                options: ["Spending time with U 🥹", "Cycling", "Gaming", "Watching movies"],
-                correct: "Spending time with U 🥹"
+                options: ["Spending time with you 🥹", "Cycling", "Gaming", "Watching movies"],
+                correct: "Spending time with you 🥹"
             },
             {
                 question: "What's Hrishikesh's favorite subject? 📚",
@@ -201,8 +201,8 @@
                 correct: "Black"
             },
             {
-                question: "What's Hrishikesh's favorite animal? 🥹",
-                options: ["Dog", "Nandita 🥹", "Elephant", "Tiger"],
+                question: "What's Hrishikesh's favorite animal? 🐕",
+                options: ["Dog", "Cat", "Nandita 🥹", "Tiger"],
                 correct: "Nandita 🥹"
             }
         ];
@@ -219,7 +219,7 @@
             const optionsContainer = document.querySelector(`#question${currentQuestionIndex + 1}-options`);
             optionsContainer.innerHTML = '';
 
-            const shuffledOptions = question.options.sort(() => Math.random() - 0.5); // Randomizing options
+            const shuffledOptions = question.options.sort(() => Math.random() - 0.5);
             shuffledOptions.forEach(option => {
                 const button = document.createElement("button");
                 button.textContent = option;
@@ -236,18 +236,18 @@
             const answerInput = document.querySelector(`#answer${currentQuestionIndex + 1}`);
 
             if (selectedAnswer === question.correct) {
-                feedbackContainer.textContent = "Correct! 🥳";
+                feedbackContainer.textContent = "Correct! 🥹💗";
                 score++;
                 answerInput.value = selectedAnswer;
-                attemptsLeft = 2; // Reset attempts for next question
+                attemptsLeft = 2;
             } else {
                 attemptsLeft--;
                 if (attemptsLeft > 0) {
                     feedbackContainer.textContent = `Incorrect! You have ${attemptsLeft} attempt(s) left. Try again. 🥹`;
                 } else {
-                    feedbackContainer.textContent = "Incorrect! Moving to the next question. 🥹💔";
+                    feedbackContainer.textContent = "Incorrect! Thadi thettichaa.. 🥹💔";
                     answerInput.value = selectedAnswer;
-                    attemptsLeft = 2; // Reset attempts for next question
+                    attemptsLeft = 2;
                 }
             }
 
