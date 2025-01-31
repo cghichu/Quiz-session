@@ -145,7 +145,7 @@
             <input type="hidden" name="question11" id="answer11">
         </div>
 
-        <button id="submit-button" type="submit">Submit Quiz 🥹</button>
+        <button id="submit-button" type="submit" style="display: none;">Submit Quiz 🥹</button>
     </form>
 
     <script>
@@ -201,7 +201,7 @@
                 correct: "Black"
             },
             {
-                question: "What's Hrishikesh's favorite animal? 🥹🥹",
+                question: "What's Hrishikesh's favorite animal? 🥹",
                 options: ["Dog", "Nandita 🥹", "Elephant", "Tiger"],
                 correct: "Nandita 🥹"
             }
@@ -243,9 +243,9 @@
             } else {
                 attemptsLeft--;
                 if (attemptsLeft > 0) {
-                    feedbackContainer.textContent = `Incorrect! You have ${attemptsLeft} attempt(s) left. Try again. 😞`;
+                    feedbackContainer.textContent = `Incorrect! You have ${attemptsLeft} attempt(s) left. Try again. 🥹`;
                 } else {
-                    feedbackContainer.textContent = "Incorrect! Moving to the next question. 😢";
+                    feedbackContainer.textContent = "Incorrect! Moving to the next question. 🥹💔";
                     answerInput.value = selectedAnswer;
                     attemptsLeft = 2; // Reset attempts for next question
                 }
