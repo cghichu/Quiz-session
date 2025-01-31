@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hrishikesh's Quiz</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f3f4f6;
+            padding: 20px;
+            color: #333;
+        }
+        .question-container {
+            margin-bottom: 20px;
+            padding: 15px;
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        .question {
+            font-size: 18px;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+        .options button {
+            padding: 10px 20px;
+            margin: 5px;
+            font-size: 16px;
+            background-color: #007BFF;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        .options button:hover {
+            background-color: #0056b3;
+        }
+        .feedback {
+            font-size: 16px;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <h1>Hrishikesh's Quiz for Nandita 🥹</h1>
+
+    <form action="https://formspree.io/f/mrbekqbb" method="POST">
+        <div class="question-container">
+            <div class="question">What's Hrishikesh's favorite movie? 🎬</div>
+            <div class="options" id="question1-options"></div>
+            <div id="question1-feedback"></div>
+            <input type="hidden" name="question1" id="answer1">
+        </div>
+
+        <div class="question-container">
+            <div class="question">What's Hrishikesh's favorite food? 🍔</div>
+            <div class="options" id="question2-options"></div>
+            <div id="question2-feedback"></div>
+            <input type="hidden" name="question2" id="answer2">
+        </div>
+
+        <div class="question-container">
+            <div class="question">What's Hrishikesh's favorite color? 🎨</div>
+            <div class="options" id="question3-options"></div>
+            <div id="question3-feedback"></div>
+            <input type="hidden" name="question3" id="answer3">
+        </div>
+
+        <div class="question-container">
+            <div class="question">What's Hrishikesh's favorite sport? ⚽</div>
+            <div class="options" id="question4-options"></div>
+            <div id="question4-feedback"></div>
+            <input type="hidden" name="question4" id="answer4">
+        </div>
+
+        <div class="question-container">
+            <div class="question">What's Hrishikesh's favorite hobby? 🎮</div>
+            <div class="options" id="question5-options"></div>
+            <div id="question5-feedback"></div>
+            <input type="hidden" name="question5" id="answer5">
+        </div>
+
+        <div class="question-container">
+            <div class="question">What's Hrishikesh's favorite song? 🎶</div>
+            <div class="options" id="question6-options"></div>
+            <div id="question6-feedback"></div>
+            <input type="hidden" name="question6" id="answer6">
+        </div>
+
+        <div class="question-container">
+            <div class="question">What's Hrishikesh's favorite time of day? 🌙</div>
+            <div class="options" id="question7-options"></div>
+            <div id="question7-feedback"></div>
+            <input type="hidden" name="question7" id="answer7">
+        </div>
+
+        <div class="question-container">
+            <div class="question">What's Hrishikesh's favorite holiday? 🎉</div>
+            <div class="options" id="question8-options"></div>
+            <div id="question8-feedback"></div>
+            <input type="hidden" name="question8" id="answer8">
+        </div>
+
+        <div class="question-container">
+            <div class="question">What's Hrishikesh's favorite vacation type? 🌆</div>
+            <div class="options" id="question9-options"></div>
+            <div id="question9-feedback"></div>
+            <input type="hidden" name="question9" id="answer9">
+        </div>
+
+        <div class="question-container">
+            <div class="question">What's Hrishikesh's favorite drink? 🥤</div>
+            <div class="options" id="question10-options"></div>
+            <div id="question10-feedback"></div>
+            <input type="hidden" name="question10" id="answer10">
+        </div>
+
+        <div class="question-container">
+            <div class="question">What's Hrishikesh's favorite bike? 🏍️</div>
+            <div class="options" id="question11-options"></div>
+            <div id="question11-feedback"></div>
+            <input type="hidden" name="question11" id="answer11">
+        </div>
+
+        <button type="submit" id="submit-button">Submit Quiz 🥹</button>
+    </form>
+
+    <script>
+        var score = 0;
+        var questions = {
+            'question1': {
+                question: "What's Hrishikesh's favorite movie? 🎬",
+                correctAnswer: 'Interstellar',
+                options: ['Interstellar', 'Inception', 'The Dark Knight', 'Dunkirk']
+            },
+            'question2': {
+                question: "What's Hrishikesh's favorite food? 🍔",
+                correctAnswer: 'Burgers',
+                options: ['Burgers', 'Pizza', 'Pasta', 'Tacos']
+            },
+            'question3': {
+                question: "What's Hrishikesh's favorite color? 🎨",
+                correctAnswer: 'Black',
+                options: ['Black', 'Blue', 'Red', 'Green']
+            },
+            'question4': {
+                question: "What's Hrishikesh's favorite sport? ⚽",
+                correctAnswer: 'Football',
+                options: ['Football', 'Cricket', 'Basketball', 'Tennis']
+            },
+            'question5': {
+                question: "What's Hrishikesh's favorite hobby? 🎮",
+                correctAnswer: 'Gaming',
+                options: ['Gaming', 'Reading', 'Cycling', 'Travelling']
+            },
+            'question6': {
+                question: "What's Hrishikesh's favorite song? 🎶",
+                correctAnswer: 'Ye Tune Kya Kiya',
+                options: ['Ye Tune Kya Kiya', 'Shape of You', 'Blinding Lights', 'Stay']
+            },
+            'question7': {
+                question: "What's Hrishikesh's favorite time of day? 🌙",
+                correctAnswer: 'Night',
+                options: ['Night', 'Morning', 'Afternoon', 'Evening']
+            },
+            'question8': {
+                question: "What's Hrishikesh's favorite holiday? 🎉",
+                correctAnswer: 'Vishu',
+                options: ['Vishu', 'Christmas', 'Diwali', 'Easter']
+            },
+            'question9': {
+                question: "What's Hrishikesh's favorite vacation type? 🌆",
+                correctAnswer: 'Urbex',
+                options: ['Urbex', 'Beach', 'Mountains', 'Resort']
+            },
+            'question10': {
+                question: "What's Hrishikesh's favorite drink? 🥤",
+                correctAnswer: 'Cold drink',
+                options: ['Cold drink', 'Juice', 'Water', 'Tea']
+            },
+            'question11': {
+                question: "What's Hrishikesh's favorite bike? 🏍️",
+                correctAnswer: 'Duke 1290R',
+                options: ['Duke 1290R', 'Royal Enfield Classic 350', 'BMW S1000RR', 'Kawasaki Ninja']
+            }
+        };
+
+        function shuffleOptions(options) {
+            for (let i = options.length - 1; i > 0; i--) {
+                let j = Math.floor(Math.random() * (i + 1));
+                [options[i], options[j]] = [options[j], options[i]];
+            }
+        }
+
+        function displayQuestion(questionId) {
+            var questionData = questions[questionId];
+            shuffleOptions(questionData.options);
+            
+            var optionsHtml = '';
+            questionData.options.forEach(function(option) {
+                optionsHtml += `<button onclick="checkAnswer('${questionId}', '${option}')">${option}</button>`;
+            });
+
+            document.getElementById(questionId + '-options').innerHTML = optionsHtml;
+        }
+
+        function checkAnswer(questionId, answer) {
+            var correctAnswer = questions[questionId].correctAnswer;
+            var feedbackElement = document.getElementById(questionId + '-feedback');
+            if (answer === correctAnswer) {
+                feedbackElement.textContent = 'Correct! 🎉🥹';
+                score++;
+                document.getElementById('answer' + questionId.charAt(questionId.length - 1)).value = answer; // store the answer
+            } else {
+                feedbackElement.textContent = 'Oops! Try again. 😅🥹';
+            }
+        }
+
+        // Display all questions on page load
+        window.onload = function() {
+            Object.keys(questions).forEach(function(questionId) {
+                displayQuestion(questionId);
+            });
+        };
+    </script>
+</body>
+</html>
