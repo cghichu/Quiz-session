@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Hrishikesh's Quiz</title>
+    <title>Hrishikesh's Quiz for Nandita 🥹</title>
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -152,17 +152,17 @@
         const questions = [
             {
                 question: "What's Hrishikesh's favorite song? 🎶",
-                options: ["Shape of You", "Ye Tune Kya Kiya", "Blinding Lights", "We Fell In Love In October"],
+                options: ["We Fell In Love In October", "Shape of You", "Ye Tune Kya Kiya", "Blinding Lights"],
                 correct: "We Fell In Love In October"
             },
             {
                 question: "What's Hrishikesh's favorite movie? 🎬",
-                options: ["Inception", "The Dark Knight", "Avatar", "Interstellar"],
+                options: ["Interstellar", "Inception", "The Dark Knight", "Avatar"],
                 correct: "Interstellar"
             },
             {
                 question: "What's Hrishikesh's favorite food? 🍔",
-                options: ["Pizza", "Burgers", "Pasta", "Sushi"],
+                options: ["Burgers", "Pizza", "Pasta", "Sushi"],
                 correct: "Burgers"
             },
             {
@@ -172,7 +172,7 @@
             },
             {
                 question: "What's Hrishikesh's favorite movie genre? 🎥",
-                options: ["Action", "Drama", "Sci-Fi", "Comedy"],
+                options: ["Sci-Fi", "Action", "Drama", "Comedy"],
                 correct: "Sci-Fi"
             },
             {
@@ -182,17 +182,17 @@
             },
             {
                 question: "What's Hrishikesh's favorite way to relax? 🌴",
-                options: ["Cycling", "Gaming", "Spending time with u 🥹", "Watching movies"],
-                correct: "Spending time with u 🥹"
+                options: ["Spending time with U 🥹", "Cycling", "Gaming", "Watching movies"],
+                correct: "Spending time with U 🥹"
             },
             {
                 question: "What's Hrishikesh's favorite subject? 📚",
-                options: ["Physics", "Computer Science", "Mathematics", "Chemistry"],
+                options: ["Computer Science", "Physics", "Mathematics", "Chemistry"],
                 correct: "Computer Science"
             },
             {
                 question: "What's Hrishikesh's favorite holiday? 🎉",
-                options: ["Onam", "Christmas", "Vishu", "New Year"],
+                options: ["Vishu", "Onam", "Christmas", "New Year"],
                 correct: "Vishu"
             },
             {
@@ -201,8 +201,8 @@
                 correct: "Black"
             },
             {
-                question: "What's Hrishikesh's favorite animal? 🐕",
-                options: ["Dog", "Cat", "Nandita 🥹", "Elephant"],
+                question: "What's Hrishikesh's favorite animal? 🥹🥹",
+                options: ["Dog", "Nandita 🥹", "Elephant", "Tiger"],
                 correct: "Nandita 🥹"
             }
         ];
@@ -211,51 +211,59 @@
         let score = 0;
         let attemptsLeft = 2;
 
-        function loadQuestion(questionIndex) {
-            const question = questions[questionIndex];
-            document.querySelector(`#question${questionIndex + 1}`).style.display = "block";
-            const optionsContainer = document.querySelector(`#question${questionIndex + 1}-options`);
+        function loadQuestion() {
+            const question = questions[currentQuestionIndex];
+            const questionContainer = document.querySelector(`#question${currentQuestionIndex + 1}`);
+            questionContainer.style.display = "block";
+
+            const optionsContainer = document.querySelector(`#question${currentQuestionIndex + 1}-options`);
             optionsContainer.innerHTML = '';
+
             const shuffledOptions = question.options.sort(() => Math.random() - 0.5); // Randomizing options
             shuffledOptions.forEach(option => {
                 const button = document.createElement("button");
                 button.textContent = option;
                 button.onclick = function() {
-                    handleAnswer(questionIndex, option);
+                    handleAnswer(option);
                 };
                 optionsContainer.appendChild(button);
             });
         }
 
-        function handleAnswer(questionIndex, selectedAnswer) {
-            const question = questions[questionIndex];
-            const feedbackContainer = document.querySelector(`#question${questionIndex + 1}-feedback`);
+        function handleAnswer(selectedAnswer) {
+            const question = questions[currentQuestionIndex];
+            const feedbackContainer = document.querySelector(`#question${currentQuestionIndex + 1}-feedback`);
+            const answerInput = document.querySelector(`#answer${currentQuestionIndex + 1}`);
+
             if (selectedAnswer === question.correct) {
                 feedbackContainer.textContent = "Correct! 🥳";
                 score++;
-                document.querySelector(`#answer${questionIndex + 1}`).value = selectedAnswer;
+                answerInput.value = selectedAnswer;
+                attemptsLeft = 2; // Reset attempts for next question
             } else {
                 attemptsLeft--;
                 if (attemptsLeft > 0) {
                     feedbackContainer.textContent = `Incorrect! You have ${attemptsLeft} attempt(s) left. Try again. 😞`;
                 } else {
                     feedbackContainer.textContent = "Incorrect! Moving to the next question. 😢";
-                    document.querySelector(`#answer${questionIndex + 1}`).value = selectedAnswer;
+                    answerInput.value = selectedAnswer;
+                    attemptsLeft = 2; // Reset attempts for next question
                 }
             }
 
             if (attemptsLeft === 0 || selectedAnswer === question.correct) {
-                attemptsLeft = 2;
                 currentQuestionIndex++;
                 if (currentQuestionIndex < questions.length) {
-                    setTimeout(() => loadQuestion(currentQuestionIndex), 1000);
+                    setTimeout(() => {
+                        document.querySelector(`#question${currentQuestionIndex}`).style.display = "block";
+                    }, 1000);
                 } else {
                     document.getElementById('submit-button').style.display = "block";
                 }
             }
         }
 
-        loadQuestion(currentQuestionIndex);
+        loadQuestion();
     </script>
 </body>
 </html>
