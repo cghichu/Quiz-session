@@ -17,6 +17,7 @@
             background-color: #fff;
             border-radius: 8px;
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            display: none;
         }
         .question {
             font-size: 18px;
@@ -40,189 +41,221 @@
             font-size: 16px;
             font-weight: bold;
         }
+        #submit-button {
+            display: none;
+            padding: 10px 20px;
+            background-color: #28a745;
+            color: white;
+            font-size: 16px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
     </style>
 </head>
 <body>
     <h1>Hrishikesh's Quiz for Nandita 🥹</h1>
 
     <form action="https://formspree.io/f/mrbekqbb" method="POST">
-        <div class="question-container">
-            <div class="question">What's Hrishikesh's favorite movie? 🎬</div>
+        <!-- Question 1 -->
+        <div id="question1" class="question-container">
+            <div class="question">What's Hrishikesh's favorite song? 🎶</div>
             <div class="options" id="question1-options"></div>
             <div id="question1-feedback"></div>
             <input type="hidden" name="question1" id="answer1">
         </div>
 
-        <div class="question-container">
-            <div class="question">What's Hrishikesh's favorite food? 🍔</div>
+        <!-- Question 2 -->
+        <div id="question2" class="question-container">
+            <div class="question">What's Hrishikesh's favorite movie? 🎬</div>
             <div class="options" id="question2-options"></div>
             <div id="question2-feedback"></div>
             <input type="hidden" name="question2" id="answer2">
         </div>
 
-        <div class="question-container">
-            <div class="question">What's Hrishikesh's favorite color? 🎨</div>
+        <!-- Question 3 -->
+        <div id="question3" class="question-container">
+            <div class="question">What's Hrishikesh's favorite food? 🍔</div>
             <div class="options" id="question3-options"></div>
             <div id="question3-feedback"></div>
             <input type="hidden" name="question3" id="answer3">
         </div>
 
-        <div class="question-container">
-            <div class="question">What's Hrishikesh's favorite sport? ⚽</div>
+        <!-- Question 4 -->
+        <div id="question4" class="question-container">
+            <div class="question">What's Hrishikesh's favorite season? ❄️</div>
             <div class="options" id="question4-options"></div>
             <div id="question4-feedback"></div>
             <input type="hidden" name="question4" id="answer4">
         </div>
 
-        <div class="question-container">
-            <div class="question">What's Hrishikesh's favorite hobby? 🎮</div>
+        <!-- Question 5 -->
+        <div id="question5" class="question-container">
+            <div class="question">What's Hrishikesh's favorite movie genre? 🎥</div>
             <div class="options" id="question5-options"></div>
             <div id="question5-feedback"></div>
             <input type="hidden" name="question5" id="answer5">
         </div>
 
-        <div class="question-container">
-            <div class="question">What's Hrishikesh's favorite song? 🎶</div>
+        <!-- Question 6 -->
+        <div id="question6" class="question-container">
+            <div class="question">What's Hrishikesh's favorite video game? 🎮</div>
             <div class="options" id="question6-options"></div>
             <div id="question6-feedback"></div>
             <input type="hidden" name="question6" id="answer6">
         </div>
 
-        <div class="question-container">
-            <div class="question">What's Hrishikesh's favorite time of day? 🌙</div>
+        <!-- Question 7 -->
+        <div id="question7" class="question-container">
+            <div class="question">What's Hrishikesh's favorite way to relax? 🌴</div>
             <div class="options" id="question7-options"></div>
             <div id="question7-feedback"></div>
             <input type="hidden" name="question7" id="answer7">
         </div>
 
-        <div class="question-container">
-            <div class="question">What's Hrishikesh's favorite holiday? 🎉</div>
+        <!-- Question 8 -->
+        <div id="question8" class="question-container">
+            <div class="question">What's Hrishikesh's favorite subject? 📚</div>
             <div class="options" id="question8-options"></div>
             <div id="question8-feedback"></div>
             <input type="hidden" name="question8" id="answer8">
         </div>
 
-        <div class="question-container">
-            <div class="question">What's Hrishikesh's favorite vacation type? 🌆</div>
+        <!-- Question 9 -->
+        <div id="question9" class="question-container">
+            <div class="question">What's Hrishikesh's favorite holiday? 🎉</div>
             <div class="options" id="question9-options"></div>
             <div id="question9-feedback"></div>
             <input type="hidden" name="question9" id="answer9">
         </div>
 
-        <div class="question-container">
-            <div class="question">What's Hrishikesh's favorite drink? 🥤</div>
+        <!-- Question 10 -->
+        <div id="question10" class="question-container">
+            <div class="question">What's Hrishikesh's favorite color? 🎨</div>
             <div class="options" id="question10-options"></div>
             <div id="question10-feedback"></div>
             <input type="hidden" name="question10" id="answer10">
         </div>
 
-        <div class="question-container">
-            <div class="question">What's Hrishikesh's favorite bike? 🏍️</div>
+        <!-- Question 11 -->
+        <div id="question11" class="question-container">
+            <div class="question">What's Hrishikesh's favorite animal? 🐕</div>
             <div class="options" id="question11-options"></div>
             <div id="question11-feedback"></div>
             <input type="hidden" name="question11" id="answer11">
         </div>
 
-        <button type="submit" id="submit-button">Submit Quiz 🥹</button>
+        <button id="submit-button" type="submit">Submit Quiz 🥹</button>
     </form>
 
     <script>
-        var score = 0;
-        var questions = {
-            'question1': {
-                question: "What's Hrishikesh's favorite movie? 🎬",
-                correctAnswer: 'Interstellar',
-                options: ['Interstellar', 'Inception', 'The Dark Knight', 'Dunkirk']
-            },
-            'question2': {
-                question: "What's Hrishikesh's favorite food? 🍔",
-                correctAnswer: 'Burgers',
-                options: ['Burgers', 'Pizza', 'Pasta', 'Tacos']
-            },
-            'question3': {
-                question: "What's Hrishikesh's favorite color? 🎨",
-                correctAnswer: 'Black',
-                options: ['Black', 'Blue', 'Red', 'Green']
-            },
-            'question4': {
-                question: "What's Hrishikesh's favorite sport? ⚽",
-                correctAnswer: 'Football',
-                options: ['Football', 'Cricket', 'Basketball', 'Tennis']
-            },
-            'question5': {
-                question: "What's Hrishikesh's favorite hobby? 🎮",
-                correctAnswer: 'Gaming',
-                options: ['Gaming', 'Reading', 'Cycling', 'Travelling']
-            },
-            'question6': {
+        const questions = [
+            {
                 question: "What's Hrishikesh's favorite song? 🎶",
-                correctAnswer: 'Ye Tune Kya Kiya',
-                options: ['Ye Tune Kya Kiya', 'Shape of You', 'Blinding Lights', 'Stay']
+                options: ["Shape of You", "Ye Tune Kya Kiya", "Blinding Lights", "We Fell In Love In October"],
+                correct: "We Fell In Love In October"
             },
-            'question7': {
-                question: "What's Hrishikesh's favorite time of day? 🌙",
-                correctAnswer: 'Night',
-                options: ['Night', 'Morning', 'Afternoon', 'Evening']
+            {
+                question: "What's Hrishikesh's favorite movie? 🎬",
+                options: ["Inception", "The Dark Knight", "Avatar", "Interstellar"],
+                correct: "Interstellar"
             },
-            'question8': {
+            {
+                question: "What's Hrishikesh's favorite food? 🍔",
+                options: ["Pizza", "Burgers", "Pasta", "Sushi"],
+                correct: "Burgers"
+            },
+            {
+                question: "What's Hrishikesh's favorite season? ❄️",
+                options: ["Winter", "Summer", "Monsoon", "Autumn"],
+                correct: "Winter"
+            },
+            {
+                question: "What's Hrishikesh's favorite movie genre? 🎥",
+                options: ["Action", "Drama", "Sci-Fi", "Comedy"],
+                correct: "Sci-Fi"
+            },
+            {
+                question: "What's Hrishikesh's favorite video game? 🎮",
+                options: ["eFootball", "FIFA", "PUBG", "Call of Duty"],
+                correct: "eFootball"
+            },
+            {
+                question: "What's Hrishikesh's favorite way to relax? 🌴",
+                options: ["Cycling", "Gaming", "Spending time with u 🥹", "Watching movies"],
+                correct: "Spending time with u 🥹"
+            },
+            {
+                question: "What's Hrishikesh's favorite subject? 📚",
+                options: ["Physics", "Computer Science", "Mathematics", "Chemistry"],
+                correct: "Computer Science"
+            },
+            {
                 question: "What's Hrishikesh's favorite holiday? 🎉",
-                correctAnswer: 'Vishu',
-                options: ['Vishu', 'Christmas', 'Diwali', 'Easter']
+                options: ["Onam", "Christmas", "Vishu", "New Year"],
+                correct: "Vishu"
             },
-            'question9': {
-                question: "What's Hrishikesh's favorite vacation type? 🌆",
-                correctAnswer: 'Urbex',
-                options: ['Urbex', 'Beach', 'Mountains', 'Resort']
+            {
+                question: "What's Hrishikesh's favorite color? 🎨",
+                options: ["Black", "Blue", "Red", "Green"],
+                correct: "Black"
             },
-            'question10': {
-                question: "What's Hrishikesh's favorite drink? 🥤",
-                correctAnswer: 'Cold drink',
-                options: ['Cold drink', 'Juice', 'Water', 'Tea']
-            },
-            'question11': {
-                question: "What's Hrishikesh's favorite bike? 🏍️",
-                correctAnswer: 'Duke 1290R',
-                options: ['Duke 1290R', 'Royal Enfield Classic 350', 'BMW S1000RR', 'Kawasaki Ninja']
+            {
+                question: "What's Hrishikesh's favorite animal? 🐕",
+                options: ["Dog", "Cat", "Nandita 🥹", "Elephant"],
+                correct: "Nandita 🥹"
             }
-        };
+        ];
 
-        function shuffleOptions(options) {
-            for (let i = options.length - 1; i > 0; i--) {
-                let j = Math.floor(Math.random() * (i + 1));
-                [options[i], options[j]] = [options[j], options[i]];
-            }
-        }
+        let currentQuestionIndex = 0;
+        let score = 0;
+        let attemptsLeft = 2;
 
-        function displayQuestion(questionId) {
-            var questionData = questions[questionId];
-            shuffleOptions(questionData.options);
-            
-            var optionsHtml = '';
-            questionData.options.forEach(function(option) {
-                optionsHtml += `<button onclick="checkAnswer('${questionId}', '${option}')">${option}</button>`;
+        function loadQuestion(questionIndex) {
+            const question = questions[questionIndex];
+            document.querySelector(`#question${questionIndex + 1}`).style.display = "block";
+            const optionsContainer = document.querySelector(`#question${questionIndex + 1}-options`);
+            optionsContainer.innerHTML = '';
+            const shuffledOptions = question.options.sort(() => Math.random() - 0.5); // Randomizing options
+            shuffledOptions.forEach(option => {
+                const button = document.createElement("button");
+                button.textContent = option;
+                button.onclick = function() {
+                    handleAnswer(questionIndex, option);
+                };
+                optionsContainer.appendChild(button);
             });
-
-            document.getElementById(questionId + '-options').innerHTML = optionsHtml;
         }
 
-        function checkAnswer(questionId, answer) {
-            var correctAnswer = questions[questionId].correctAnswer;
-            var feedbackElement = document.getElementById(questionId + '-feedback');
-            if (answer === correctAnswer) {
-                feedbackElement.textContent = 'Correct! 🎉🥹';
+        function handleAnswer(questionIndex, selectedAnswer) {
+            const question = questions[questionIndex];
+            const feedbackContainer = document.querySelector(`#question${questionIndex + 1}-feedback`);
+            if (selectedAnswer === question.correct) {
+                feedbackContainer.textContent = "Correct! 🥳";
                 score++;
-                document.getElementById('answer' + questionId.charAt(questionId.length - 1)).value = answer; // store the answer
+                document.querySelector(`#answer${questionIndex + 1}`).value = selectedAnswer;
             } else {
-                feedbackElement.textContent = 'Oops! Try again. 😅🥹';
+                attemptsLeft--;
+                if (attemptsLeft > 0) {
+                    feedbackContainer.textContent = `Incorrect! You have ${attemptsLeft} attempt(s) left. Try again. 😞`;
+                } else {
+                    feedbackContainer.textContent = "Incorrect! Moving to the next question. 😢";
+                    document.querySelector(`#answer${questionIndex + 1}`).value = selectedAnswer;
+                }
+            }
+
+            if (attemptsLeft === 0 || selectedAnswer === question.correct) {
+                attemptsLeft = 2;
+                currentQuestionIndex++;
+                if (currentQuestionIndex < questions.length) {
+                    setTimeout(() => loadQuestion(currentQuestionIndex), 1000);
+                } else {
+                    document.getElementById('submit-button').style.display = "block";
+                }
             }
         }
 
-        // Display all questions on page load
-        window.onload = function() {
-            Object.keys(questions).forEach(function(questionId) {
-                displayQuestion(questionId);
-            });
-        };
+        loadQuestion(currentQuestionIndex);
     </script>
 </body>
 </html>
